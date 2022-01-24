@@ -1,0 +1,36 @@
+name: django-testing
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - appdirs=1.4.4=pyh9f0ad1d_0
+  - asgiref=3.5.0=pyhd8ed1ab_0
+  - bzip2=1.0.8=h8ffe710_4
+  - ca-certificates=2021.10.8=h5b45459_0
+  - certifi=2021.10.8=py310h5588dad_1
+  - distlib=0.3.4=pyhd8ed1ab_0
+  - django=4.0=pyhd8ed1ab_1
+  - filelock=3.4.2=pyhd8ed1ab_1
+  - libffi=3.4.2=h8ffe710_5
+  - libzlib=1.2.11=h8ffe710_1013
+  - openssl=3.0.0=h8ffe710_2
+  - pip=21.3.1=pyhd8ed1ab_0
+  - pipenv=2022.1.8=pyhd8ed1ab_0
+  - python=3.10.2=hcf16a7b_0_cpython
+  - python_abi=3.10=2_cp310
+  - pytz=2021.3=pyhd8ed1ab_0
+  - setuptools=60.5.0=py310h5588dad_0
+  - six=1.16.0=pyh6c4a22f_0
+  - sqlite=3.37.0=h8ffe710_0
+  - sqlparse=0.4.2=pyhd8ed1ab_0
+  - tk=8.6.11=h8ffe710_1
+  - typing_extensions=4.0.1=pyha770c72_0
+  - tzdata=2021e=he74cb21_0
+  - ucrt=10.0.20348.0=h57928b3_0
+  - vc=14.2=hb210afc_6
+  - virtualenv=20.4.7=py310h5588dad_1
+  - virtualenv-clone=0.5.4=pyh9f0ad1d_0
+  - vs2015_runtime=14.29.30037=h902a5da_6
+  - wheel=0.37.1=pyhd8ed1ab_0
+  - xz=5.2.5=h62dcd97_1
+prefix: C:\Anaconda3\envs\django-testing
