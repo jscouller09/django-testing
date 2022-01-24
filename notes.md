@@ -1,0 +1,4 @@
+# DJANGO NOTES
+
+## Setup
+
