@@ -5,6 +5,18 @@ https://www.youtube.com/watch?v=rHux0gMZ3Eg
 
 ## Setup
 
+start new virtual environment using pipenv inside the current project folder
+
+`mkdir .venv`
+
+`pipenv install django`
+
+`$Env:PIPENV_VENV_IN_PROJECT = ""`
+
+lauch virtual env
+
+`pipenv shell`
+
 start django project in current folder
 
 `django-admin startproject project-name . `
@@ -61,3 +73,25 @@ create new app - will make a subfolder with template files
 `   <p>Hello World from the template</p>`
 
 `{% endif %}`
+
+
+### interactive debugging
+* create a launch.json file with the Django style template
+* can specify port 9000 as optional arg so it doesn't clash with other server instance
+* can add debugging breakpoints and step into/over code lines
+* run application with debugging F5
+* run application without debugging CTRL+F5
+
+
+### Django Debug toolbar
+* install django-debug-toolbar using pipenv or conda
+* add 'debug_tollbar' to list of installed apps in 'settings.py'
+* add url pattern to 'url.py'
+* add debug_toolbar to middleware in 'settings.py' at the top of the list
+* add internal ip address to INTERNAL_IPS in 'settings.py' 
+* reference: https://django-debug-toolbar.readthedocs.io/en/latest/installation.html
+* debugging toolbar will appear as sidebar in browser when an HTML page is returned
+
+
+### ORM in Django
+* association class = join table for many to many relationships
