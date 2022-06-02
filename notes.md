@@ -17,7 +17,7 @@ lauch virtual env
 
 `pipenv shell`
 
-start django project in current folder
+start django project in current folder - suggest putting django project in src subfolder below current virtual environment
 
 `django-admin startproject project-name . `
 
