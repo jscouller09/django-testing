@@ -1,21 +1,21 @@
 # DJANGO NOTES
 
-following tutorial here:
+following tutorial(s) here:
 https://www.youtube.com/watch?v=rHux0gMZ3Eg
+
+https://www.youtube.com/watch?v=F5mRW0jo-U4
 
 ## Setup
 
-start new virtual environment using pipenv inside the current project folder
+start new virtual environment using pipenv inside the current project folder (will automatically go into .venv folder if it exists)
 
 `mkdir .venv`
 
 `pipenv install django`
 
-`$Env:PIPENV_VENV_IN_PROJECT = ""`
-
 lauch virtual env
 
-`pipenv shell`
+`.venv/Scripts.activate.bat`
 
 start django project in current folder - suggest putting django project in src subfolder below current virtual environment
 
@@ -29,7 +29,24 @@ create new app - will make a subfolder with template files
 
 `python manage.py startapp appname`
 
+create admin user
+
+`python manage.py createsuperuser`
+
 ## Common tasks
+
+run migrations
+
+`python manage.py migrate`
+
+make migrations from models created/updated in code
+
+`python manage.py makemigrations`
+
+open python shell with access to models etc.
+
+`python manage.py shell`
+
 
 ### actions/requests
 * Django calls these views, but they are really action/request handlers
@@ -95,3 +112,20 @@ create new app - will make a subfolder with template files
 
 ### ORM in Django
 * association class = join table for many to many relationships
+* table names created from class name e.g. `class Product(models.Model)`
+* use model fields to create DB attributes e.g. `title = models.TextField()`
+* register models in 'admin.py' to look at them in the admin interface 
+* create a sub-method in the model called __str__ that returns a particular attribute if you would like that to show up when viewing the model instances in the admin viewer/shell
+
+```
+from .models import Product
+admin.site.register(Product)
+```
+
+* accessing/creating model instances in shell terminal
+```
+python manage.py shell
+from playground.models import Product
+Product.objects.all()
+Product.objects.create(title='some title', description='desc', price='20', summary='sweet')
+```
