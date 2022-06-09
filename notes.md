@@ -33,6 +33,10 @@ run server on default port 8000
 
 `python manage.py runserver`
 
+run server in background at host ip address, on port 8000
+
+`nohup python manage.py runserver 0.0.0.0:8000 &`
+
 create new app - will make a subfolder with template files
 
 `python manage.py startapp appname`
