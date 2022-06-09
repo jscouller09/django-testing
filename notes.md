@@ -13,9 +13,17 @@ start new virtual environment using pipenv inside the current project folder (wi
 
 `pipenv install django`
 
+to build venv from requirements.txt file in main dir
+
+`pipenv install -r requirements.txt`
+
 lauch virtual env
 
 `.venv/Scripts.activate.bat`
+
+to freeze packages and generate requirements.txt
+
+`pip freeze > requirements.txt`
 
 start django project in current folder - suggest putting django project in src subfolder below current virtual environment
 
