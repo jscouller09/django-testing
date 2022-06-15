@@ -184,6 +184,23 @@ Product.objects.all()
 Product.objects.create(title='some title', description='desc', price='20', summary='sweet')
 ```
 
+* deleting data - usually do via POST request submission so user can confirm
+* querying data to produce an iterable:
+
+`queryset = Product.objects.all()`
+
+### Dynamic linking of URLS
+
+* make get_absolute_url in django model instance like so:
+* can then call from HTML templates
+```
+def get_absolute_url(self):
+    #return f"/playground/products/{self.id}"
+    return reverse("product-detail", kwargs={'id': self.id}) 
+```
+
+* django.urls.reverse can be used instead to make things more reusable
+
 ### Django model forms
 * create a class in 'forms.py' that inherits from django.forms.ModelForm
 * include subclass Meta with model and field attributes like so:
