@@ -21,4 +21,5 @@ urlpatterns = [
     path('playground/', include('playground.urls')),
     path('pages/', include('pages.urls')),
     path('__debug__/', include('debug_toolbar.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
 ]

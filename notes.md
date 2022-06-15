@@ -84,10 +84,22 @@ to kill off a running server instance - find pid by searching for instances of r
 
 `path('blog/', include('blog.urls'))`
 
+### dynamic url routing
+* use <> in url route to include ids etc.
+
+`path('products/<int:id>/', views.dynamic_lookup_view, name='product')`
+
+* pass in as argument to the view method e.g)
+
+`def dynamic_lookup_view(request, id):`
+
+* to handle does not exist use inbuilt django.shortcuts.get_object_or_404
+
 ### views/templates
 * called template in Django but actually a view (HTML markup)
 * store in 'templates' subfolder under app subfolder
 * use django.shortchuts.render to return HTTP responses like this: 
+* template context data can be passed as dict
 
 `return render(request, template_name='hello.html')`
 
@@ -99,11 +111,22 @@ to kill off a running server instance - find pid by searching for instances of r
 
 `<h1>Hello {{ name }} from the template</h1>`
 
+* if a list is passed in, access using a for loop like (note counter will be 1 indexed):
+`{% for my_sub_item in my_list %}`
+
+`   <p>{{ forloop.counter }} - Hello {{ my_sub_item }} from the template</p>`
+
+`{% endfor %}`
+
 * in the template do if statements like so: 
 
 `{% if name %}`
 
 `   <p>Hello {{ name }} from the template</p>`
+
+`{% elif name=='' %}`
+
+`   <p>Hello from the template</p>`
 
 `{% else %}`
 
@@ -114,6 +137,10 @@ to kill off a running server instance - find pid by searching for instances of r
 * can use generic tag {% block content_name %}  {% endblock %} to bulk replace HTML content on a template page
 * need to place inside a default page called 'base.html'
 * at the top of subsequent pages use {% extends 'base.html' %}
+* can also use the include tag to incorporate HTML templates on specific pages {% include 'navbar.html' %}
+* also template tags called filters e.g) add 22 to a value like so -> {{ some_val|add:22}}
+* useful built in filter 'safe' renders HTML content from a string
+* see https://docs.djangoproject.com/en/4.0/ref/templates/builtins/ for more
 
 ### interactive debugging
 * create a launch.json file with the Django style template
@@ -157,3 +184,51 @@ Product.objects.all()
 Product.objects.create(title='some title', description='desc', price='20', summary='sweet')
 ```
 
+### Django model forms
+* create a class in 'forms.py' that inherits from django.forms.ModelForm
+* include subclass Meta with model and field attributes like so:
+
+```
+from django import forms
+from .models import Product
+
+class ProductForm(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = [
+            'title',
+            'description',
+            'price',
+        ]
+```
+* once this is done create a view to use the form:
+```
+def product_create_view(request):
+    form = ProductForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        # re-render empty form
+        form = ProductForm()
+    context = {'form': form}
+    return render(request, 'products/product_create.html', context)
+```
+* and an HTML template with special method form.as_p and csrf_token (required for POST requests) to render the form:
+```
+{% extends 'base.html' %}
+
+{% block content %}
+<form method='POST'> {% csrf_token %}
+    {{ form.as_p }}
+    <input type='submit', value='Save'>
+</form>
+{% endblock %}
+```
+
+* can do custom validation by overwriting clean_<property_name> methods within the form class like so:
+```
+def clean_title(self, *args, **kwargs):
+    title = self.cleaned_data.get('title')
+    if 'cfe' not in title:
+        raise forms.ValidationError('This is not a valid title')
+    return title
+```

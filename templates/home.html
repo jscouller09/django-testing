@@ -5,4 +5,9 @@
 {% endblock %}
 {% block content_main %}
 <p>Some additional main content</p>
+<ul>
+    {% for sub_item in list_data %}
+        <li>{{ forloop.counter }} - {{ sub_item }}</li>
+    {% endfor %}
+</ul>
 {% endblock %}
