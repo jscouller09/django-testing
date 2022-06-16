@@ -143,7 +143,7 @@ to kill off a running server instance - find pid by searching for instances of r
 * see https://docs.djangoproject.com/en/4.0/ref/templates/builtins/ for more
 
 ### class based view mixins
-*
+* put mixin first in inherited classes before django.views.View
 
 ### interactive debugging
 * create a launch.json file with the Django style template
