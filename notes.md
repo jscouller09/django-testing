@@ -142,6 +142,9 @@ to kill off a running server instance - find pid by searching for instances of r
 * useful built in filter 'safe' renders HTML content from a string
 * see https://docs.djangoproject.com/en/4.0/ref/templates/builtins/ for more
 
+### class based view mixins
+*
+
 ### interactive debugging
 * create a launch.json file with the Django style template
 * can specify port 9000 as optional arg so it doesn't clash with other server instance
