@@ -47,6 +47,9 @@ make migrations from models created/updated in code
 
 `python manage.py makemigrations`
 
+make empty migration to populate seed data -see https://docs.djangoproject.com/en/4.0/topics/migrations/#data-migrations
+`python manage.py makemigrations --empty yourappname -n migration_name`
+
 run migrations
 
 `python manage.py migrate`
