@@ -64,12 +64,28 @@ run server on default port 8000
 
 run server in background at host ip address, on port 8000 and 
 
-`nohup python manage.py runserver 0.0.0.0:8000 &`
+`nohup python -u manage.py runserver 0.0.0.0:8000 &`
+`nohup python -u manage.py runserver 0.0.0.0:8000 > ~/PDP_telemetry/logs/nohup_runserver_$(date --iso).out &`
 
 to kill off a running server instance - find pid by searching for instances of runserver then kill that pid
 
 `ps auxw | grep runserver`
 `kill pid`
+
+or to kill off in one step
+
+`for i in $( ps ax | awk '/runserver/ {print $1}' ); do kill ${i}; done`
+
+run redis server
+
+`sudo service redis-server start`
+
+start cluster in background and quit if required
+
+`nohup python -u manage.py qcluster &`
+`nohup python -u manage.py qcluster > ~/PDP_telemetry/logs/nohup_qcluster_$(date --iso).out &`
+`for i in $( ps ax | awk '/qcluster/ {print $1}' ); do kill ${i}; done`
+
 
 ### actions/requests
 * Django calls these views, but they are really action/request handlers
