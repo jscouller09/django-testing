@@ -9,6 +9,9 @@ https://www.youtube.com/watch?v=F5mRW0jo-U4
 
 https://docs.djangoproject.com/en/4.0/intro/overview/
 
+https://www.digitalocean.com/community/tutorials/how-to-install-postgresql-on-ubuntu-20-04-quickstart
+
+https://www.digitalocean.com/community/tutorials/how-to-use-postgresql-with-your-django-application-on-ubuntu-20-04
 ## Setup
 
 start new virtual environment using pipenv inside the current project folder (will automatically go into .venv folder if it exists)
